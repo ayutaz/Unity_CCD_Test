@@ -24,8 +24,12 @@ namespace _CCD_Test
             GetFBX();
         }
 
-        private void GetFBX()
+        private async void GetFBX()
         {
+            var fbx = UnityWebRequest.Get(Path.Combine(myData.ccdBaseURL, FBXURL));
+            Debug.Log(Path.Combine(myData.ccdBaseURL, FBXURL));
+            await fbx.SendWebRequest();
+            Debug.Log("FBX: " + fbx.downloadHandler);
         }
 
         private async void GetPNG()
